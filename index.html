@@ -5,7 +5,6 @@
 <title>Happy Birthday Aditi Sneha</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300&display=swap" rel="stylesheet">
-
 <style>
 body {
   margin: 0;
@@ -22,15 +21,13 @@ h1 {
 }
 
 .subtitle {
-  font-size: 1.2em;
-  margin-bottom: 40px;
   color: #777;
 }
 
 .cake {
   font-size: 80px;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: 0.3s;
 }
 
 .cake:hover {
@@ -38,13 +35,12 @@ h1 {
 }
 
 .section {
-  margin: 60px 20px;
+  margin: 50px 20px;
 }
 
 .languages {
-  font-size: 1.5em;
+  font-size: 1.4em;
   height: 40px;
-  color: #555;
 }
 
 .messages {
@@ -60,30 +56,16 @@ h1 {
   border-radius: 15px;
   width: 250px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 1s forwards;
-}
-
-.card:nth-child(2) { animation-delay: 0.3s; }
-.card:nth-child(3) { animation-delay: 0.6s; }
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 button {
-  margin-top: 30px;
   padding: 12px 25px;
   border: none;
   border-radius: 25px;
   background: #333;
   color: white;
-  font-size: 16px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 .hidden {
@@ -91,10 +73,29 @@ button {
 }
 
 .final-message {
-  font-size: 1.3em;
   margin-top: 30px;
+  font-size: 1.2em;
   line-height: 1.6;
-  color: #444;
+}
+
+/* COLLAGE */
+.collage {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.collage img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.collage img:hover {
+  transform: scale(1.05);
 }
 </style>
 </head>
@@ -115,47 +116,35 @@ button {
 <div class="section">
   <h2>💌 Messages from Us</h2>
   <div class="messages">
-
-    <div class="card">
-      1. You are a very observant person, always paying attention to your surroundings and how people act and how comfortable they are, you notice things I never thought people would notice.
+    <div class="card">1. You are a very observant person, always paying attention to your surroundings and how people act and how comfortable they are, you notice things I never thought people would notice.
 2. You are soft spoken and sweet but colourful and a little bit insane in your own way ( literally dont give a shit where no shits are to be given ily).
-3. Aap bohot sigma ho Bibi Ji 😋, itni sigma ki log handle nahi kr paate, ap jab side-eye deti ho logon ko woh jal ke raakh ban jaate hain❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥  
-      <br><br>– Yours Athiya
-    </div>
-
-    <div class="card">
-      Dear Aditi,
+3. Aap bohot sigma ho Bibi Ji 😋, itni sigma ki log handle nahi kr paate, ap jab side-eye deti ho logon ko woh jal ke raakh ban jaate hain❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥<br><br>– Athiya</div>
+    <div class="card">Dear Aditi,
 Happiest bday bbg, tum bohot hi zyada cute aur innocent ho and I hope tum hamesha aisi hi raho. Wishing you an amazing birthday
-(With dher saari geeli pappiya 💋💋💋) 
-      <br><br>– Anjali
-    </div>
-
-    <div class="card">
-      HBD..BBG.. You're sweet and elegant as an angel. You radiate peace and sweetness and I can't express how happy I feel being with you. I hope you get more wisdom, happiness and success and god bless you always... Love you forever
-      <br><br>– Divyanshi
-    </div>
-    
-    <div class="card">
-      To more laughter, memories, and beautiful moments together. ✨  
-      <br><br>– All of Us
-    </div>
-
+(With dher saari geeli pappiya 💋💋💋)<br><br>– Anjali</div>
+    <div class="card">HBD..BBG.. You're sweet and elegant as an angel. You radiate peace and sweetness and I can't express how happy I feel being with you. I hope you get more wisdom, happiness and success and god bless you always... Love you forever<br><br>– Divyanshi</div>
+    <div class="card">We are lucky to have you ✨<br><br>– All of Us</div>
   </div>
 </div>
 
 <button onclick="showFinal()">Open Your Surprise ✨</button>
 
+<div id="final" class="hidden final-message"></div>
+
+<!-- COLLAGE -->
 <div id="collage" class="hidden collage">
-  <img src="aditi.png" alt="Memories">
+  <img src="images/aditi.png">
 </div>
 
-<div id="final" class="hidden final-message"></div>
+<!-- AUDIO -->
+<audio id="music" src="birthday.mp3"></audio>
 
 <script>
 function blowCandles() {
   alert("Close your eyes and make a wish ✨");
 }
 
+/* Language rotation */
 const wishes = [
   "Happy Birthday 🎂",
   "Feliz Cumpleaños 🎉",
@@ -171,13 +160,24 @@ setInterval(() => {
   i = (i + 1) % wishes.length;
 }, 1800);
 
-const message = "Aditi Sneha,\n\nYou are not just special today, but every single day. \nYou bring grace, warmth, and happiness into our lives in ways words can't fully capture.\n\nWe are truly lucky to have you.\n\nHappy Birthday once again ✨";
+/* Final message + collage + music */
+const message = `Aditi Sneha,
+
+You bring so much warmth, grace, and happiness into our lives.
+Every moment with you becomes a beautiful memory.
+
+We are truly lucky to have you.
+
+Happy Birthday ✨`;
 
 let index = 0;
 
 function showFinal() {
   document.getElementById("final").classList.remove("hidden");
+  document.getElementById("collage").classList.remove("hidden");
+
   typeWriter();
+  launchConfetti();
 }
 
 function typeWriter() {
@@ -187,7 +187,32 @@ function typeWriter() {
     setTimeout(typeWriter, 40);
   }
 }
+function launchConfetti() {
+  const duration = 3 * 1000;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 5,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 }
+    });
+
+    confetti({
+      particleCount: 5,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 }
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+}
 </script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 </body>
 </html>
