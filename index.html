@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Aditi Sneha</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  text-align: center;
+  color: #333;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3em;
+  margin-top: 60px;
+}
+
+.subtitle {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+  color: #777;
+}
+
+.cake {
+  font-size: 80px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.cake:hover {
+  transform: scale(1.1);
+}
+
+.section {
+  margin: 60px 20px;
+}
+
+.languages {
+  font-size: 1.5em;
+  height: 40px;
+  color: #555;
+}
+
+.messages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 15px;
+  width: 250px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s forwards;
+}
+
+.card:nth-child(2) { animation-delay: 0.3s; }
+.card:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #333;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.final-message {
+  font-size: 1.3em;
+  margin-top: 30px;
+  line-height: 1.6;
+  color: #444;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Happy Birthday, Aditi Sneha ✨</h1>
+<p class="subtitle">A day to celebrate someone truly special</p>
+
+<div class="cake" onclick="blowCandles()">🎂</div>
+<p>Click the cake and make a wish</p>
+
+<div class="section">
+  <h2>🌍 Wishes Around the World</h2>
+  <div class="languages" id="lang"></div>
+</div>
+
+<div class="section">
+  <h2>💌 Messages from Us</h2>
+  <div class="messages">
+
+    <div class="card">
+      You light up every room you walk into. Never change. 💫  
+      <br><br>– Your Friend
+    </div>
+
+    <div class="card">
+      Life feels better with you in it. Stay amazing always. 💖  
+      <br><br>– Bestie
+    </div>
+
+    <div class="card">
+      To more laughter, memories, and beautiful moments together. ✨  
+      <br><br>– All of Us
+    </div>
+
+  </div>
+</div>
+
+<button onclick="showFinal()">Open Your Surprise ✨</button>
+
+<div id="final" class="hidden final-message"></div>
+
+<script>
+function blowCandles() {
+  alert("Close your eyes and make a wish ✨");
+}
+
+const wishes = [
+  "Happy Birthday 🎂",
+  "Feliz Cumpleaños 🎉",
+  "Joyeux Anniversaire 🎈",
+  "जन्मदिन मुबारक 🎁",
+  "お誕生日おめでとう 🎊",
+  "عيد ميلاد سعيد 🎂"
+];
+
+let i = 0;
+setInterval(() => {
+  document.getElementById("lang").innerText = wishes[i];
+  i = (i + 1) % wishes.length;
+}, 1800);
+
+const message = "Aditi Sneha,\n\nYou are not just special today, but every single day. \nYou bring grace, warmth, and happiness into our lives in ways words can't fully capture.\n\nWe are truly lucky to have you.\n\nHappy Birthday once again ✨";
+
+let index = 0;
+
+function showFinal() {
+  document.getElementById("final").classList.remove("hidden");
+  typeWriter();
+}
+
+function typeWriter() {
+  if (index < message.length) {
+    document.getElementById("final").innerHTML += message.charAt(index);
+    index++;
+    setTimeout(typeWriter, 40);
+  }
+}
+</script>
+
+</body>
+</html>
